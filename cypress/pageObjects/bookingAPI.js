@@ -42,6 +42,8 @@ export class BookingAPI {
       }
     }).then((response) => {
       expect(response.status).to.eq(200);
+      expect(response.body.booking.firstname).to.not.be.empty;
+      expect(response.body.booking.lastname).to.not.be.empty;
       expect(response.body.booking.firstname).to.eq(this.firstname);
       expect(response.body.booking.lastname).to.eq(this.lastname);
       this.bookingId = response.body.bookingid;
@@ -54,6 +56,8 @@ export class BookingAPI {
       url: `/booking/${this.bookingId}`
     }).then((response) => {
       expect(response.status).to.eq(200);
+      expect(response.body.firstname).to.not.be.empty;
+      expect(response.body.lastname).to.not.be.empty;
       expect(response.body.firstname).to.eq(this.firstname);
       expect(response.body.lastname).to.eq(this.lastname);
       expect(response.body.additionalneeds).to.eq('Breakfast');
